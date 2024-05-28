@@ -1,0 +1,14 @@
+div.message {
+   width: 500px;
+   padding: 30px;
+   margin: 30px auto;
+   text-align: center;
+   border: 10px solid rgba(150, 150, 150, .3);
+   font-size: 1.2em;
+}
+
+div.go_home {
+   width: 500px;
+   margin: 30px auto;
+   text-align: center;
+}

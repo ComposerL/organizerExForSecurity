@@ -1,0 +1,29 @@
+article {
+   width: 100%;
+   margin: 50px 0 70px;
+}
+
+#article_wrap {
+   width: 1500px;
+   margin: 0 auto;
+}
+
+/* WORD START */
+#article_wrap .word {
+   text-align: center;
+   font-weight: bolder;
+   font-size: 1.1em;
+}
+/* WORD END */
+
+/* CONTENT START */
+#article_wrap .content {
+   margin-top: 10px;
+   text-align: center;
+}
+
+#article_wrap .content img {
+   padding: 10px 0;
+   max-width: 1500px;
+}
+/* CONTENT END */

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{include/title.html::title}"></title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/member/member.css}">
+<link rel="stylesheet" th:href="@{/css/header_nav_footer.css}">
+
+<script type="text/javascript" th:src="@{/js/signin.js}"></script>
+
+</head>
+<body>
+   
+   <header th:replace="~{include/header_nav_footer.html::header}">
+   </header>
+   
+   <nav th:replace="~{include/header_nav_footer.html::nav}">
+   </nav>
+   
+   <article>
+      <div id="article_wrap">
+         
+         <div class="word">
+            <span>MEMBER SIGN-IN</span>
+         </div>
+         
+         <div class="content">
+            <form action="/member/memberSignInConfirm" name="member_signin_form" method="post">
+               <input type="text" name="m_id" placeholder="INPUT NEW MEMBER ID"><br />
+               <input type="password" name="m_pw" placeholder="INPUT NEW MEMBER PW"><br />
+               <input type="button" value="SIGN-IN" onclick="memberSigninForm();">
+               <input type="reset" value="RESET">      
+            </form>
+         </div>
+         
+         <div class="others">
+            <a th:href="@{/member/memberSignUp}">SIGN-UP</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/member/findeIdOrPw}">FIND ID OR PASSWORD</a>
+         </div>
+         
+      </div>
+   </article>
+   
+   <footer th:replace="~{include/header_nav_footer.html::footer}">
+   </footer>
+   
+</body>
+</html>

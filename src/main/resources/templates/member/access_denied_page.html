@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{include/title.html::title}"></title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/error/error.css}">
+
+</head>
+<body>
+
+   <div class="message">
+      You do not have access rights.<br>
+      Please contact the administrator.
+   </div>
+   
+   <div class="go_home">
+      <a th:href="@{/}">Go home</a>
+   </div>
+
+</body>
+</html>

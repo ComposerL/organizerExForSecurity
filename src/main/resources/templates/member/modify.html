@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{include/title.html::title}"></title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/member/member.css}">
+<link rel="stylesheet" th:href="@{/css/header_nav_footer.css}">
+
+<script type="text/javascript" th:src="@{/js/modify.js}"></script>
+
+</head>
+<body>
+   
+   <header th:replace="~{include/header_nav_footer.html::header}">
+   </header>
+   
+   <nav th:replace="~{include/header_nav_footer.html::nav}">
+   </nav>
+   
+   <article>
+      <div id="article_wrap">
+         
+         <div class="word">
+            <span>MEMBER MODIFY</span>
+         </div>
+         
+         <div class="content">
+            <form action="/member/memberModifyConfirm" name="member_modify_form" method="post">            
+               <input type="hidden" name="m_no" th:value=${loginedMemberDto.m_no}><br />
+               <input type="text" name="m_id" th:value=${loginedMemberDto.m_id} readonly disabled><br />
+               <input type="password" name="m_pw" placeholder="INPUT MEMBER PW"><br />
+               <input type="email" name="m_mail" th:value=${loginedMemberDto.m_mail} placeholder="INPUT MEMBER MAIL"><br />
+               <input type="text" name="m_phone" th:value=${loginedMemberDto.m_phone} placeholder="INPUT MEMBER PHONE"><br />
+               <input type="button" value="MODIFY" onclick="memberModifyForm();">
+               <input type="reset" value="RESET">      
+            </form>
+         </div>
+         
+         <div class="others">
+            <!-- <a th:href="@{/member/memberDeleteConfirm}">DELETE MEMBER</a> -->
+            <a href="#none" onclick="memberDeleteConfirm();">DELETE MEMBER</a>
+         </div>
+         
+      </div>
+   </article>
+   
+   <footer th:replace="~{include/header_nav_footer.html::footer}">
+   </footer>
+   
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+   <header th:fragment="header">
+      
+      <div id="header_wrap">
+         <a th:href="@{/}">Our Organizer Sevice</a> &nbsp;&nbsp;
+      </div>
+   </header>
+   <nav th:fragment="nav">
+   <!-- 
+      <div id="nav_wrap" th:if="${session.loginedMemberId == null}">
+         <a th:href="@{/}">HOME</a> &nbsp;&nbsp;
+         <a th:href="@{/member/memberSignUp}">SIGN-UP</a> &nbsp;&nbsp;
+         <a th:href="@{/member/memberSignIn}">SIGN-IN</a> &nbsp;&nbsp;
+      </div>
+      <div id="nav_wrap" th:unless="${session.loginedMemberId == null}">
+         <a th:href="@{/}">HOME</a> &nbsp;&nbsp;
+         <a th:href="@{/member/memberModify}">MODIFY</a> &nbsp;&nbsp;
+         <a th:href="@{/member/memberSignOutConfirm}">SIGN-OUT</a> &nbsp;&nbsp;
+         <a th:href="@{/organizer}">ORGANIZER</a> &nbsp;&nbsp;
+      </div>
+    -->
+	    <div id="nav_wrap" th:unless="${#authentication != null and #authorization.expression('isAuthenticated()')}">
+	        <a th:href="@{/}">HOME</a> &nbsp;&nbsp;
+	        <a th:href="@{/member/memberSignUp}">SIGN-UP</a> &nbsp;&nbsp;
+	        <a th:href="@{/member/memberSignIn}">SIGN-IN</a> &nbsp;&nbsp;
+	    </div>
+	    <div id="nav_wrap" th:if="${#authentication != null and #authorization.expression('isAuthenticated()')}">
+	       <a th:href="@{/}">HOME</a> &nbsp;&nbsp;
+	       <a th:href="@{/member/memberModify}">MODIFY</a> &nbsp;&nbsp;
+	       <a th:href="@{/member/memberSignOutConfirm}">SIGN-OUT</a> &nbsp;&nbsp;
+	       <a th:href="@{/organizer}">ORGANIZER</a> &nbsp;&nbsp;
+	    </div>
+   </nav>
+   <footer th:fragment="footer">
+      <div id="footer_wrap">
+         Copyright ©OFFICE Corp. All Rights Reserved.
+      </div>
+   </footer>
+   
+</html>

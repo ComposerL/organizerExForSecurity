@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{include/title.html::title}"></title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/member/member.css}">
+<link rel="stylesheet" th:href="@{/css/header_nav_footer.css}">
+
+<script type="text/javascript" th:src="@{/js/signup.js}"></script>
+
+</head>
+<body>
+   
+   <header th:replace="~{include/header_nav_footer.html::header}">
+   </header>
+   
+   <nav th:replace="~{include/header_nav_footer.html::nav}">
+   </nav>
+   
+   <article>
+      <div id="article_wrap">
+         
+         <div class="word">
+            <span>MEMBER SIGN-UP</span>
+         </div>
+         
+         <div class="content">
+            <form action="/member/memberSignUpConfirm" name="member_signup_form" method="post">
+               <input type="text" name="m_id" placeholder="INPUT NEW MEMBER ID"><br />
+               <input type="password" name="m_pw" placeholder="INPUT NEW MEMBER PW"><br />
+               <input type="email" name="m_mail" placeholder="INPUT NEW MEMBER MAIL"><br />
+               <input type="text" name="m_phone" placeholder="INPUT NEW MEMBER PHONE"><br />
+               <input type="button" value="SIGN-UP" onclick="memberSignupForm();">
+               <input type="reset" value="RESET">      
+            </form>
+         </div>
+         
+         <div class="others">
+            <a th:href="@{/member/memberSignIn}">SIGN-IN</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/member/findeIdOrPw}">FIND ID OR PASSWORD</a>
+         </div>
+         
+      </div>
+   </article>
+   
+   <footer th:replace="~{include/header_nav_footer.html::footer}">
+   </footer>
+   
+</body>
+</html>

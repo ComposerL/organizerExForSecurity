@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.office.myorganizeruser.member.mapper.IMemberMapper">
+
+	<select id="isMember" parameterType="String" resultType="boolean">
+	
+		SELECT
+			COUNT(*) AS CNT
+		FROM
+			TBL_MEMBER
+		WHERE
+			M_ID = #{m_id}
+	
+	</select>
+	
+	<insert id="memberSignUpConfirm" parameterType="MemberDto">
+	
+		INSERT INTO TBL_MEMBER(M_ID,M_PW,M_MAIL,M_PHONE) 
+		VALUES(#{m_id},#{m_pw},#{m_mail},#{m_phone}) 
+	
+	</insert>
+	
+	<select id="memberSignInConfirm" parameterType="MemberDto" resultType="MemberDto">
+		
+		SELECT 
+			* 
+		FROM 
+			TBL_MEMBER 
+		WHERE 
+			M_ID = #{m_id} 
+		AND 
+			M_PW = #{m_pw}
+		
+	</select>
+	
+	<select id="getMemberById" parameterType="String" resultType="MemberDto">
+		
+		SELECT 
+			* 
+		FROM 
+			TBL_MEMBER 
+		WHERE 
+			M_ID = #{m_id} 
+		
+	</select>
+	
+	<update id="memberModifyConfirm" parameterType="MemberDto">
+		
+		UPDATE
+			TBL_MEMBER
+		SET
+			M_PW = #{m_pw},
+			M_MAIL = #{m_mail},
+			M_PHONE = #{m_phone},
+			M_MOD_DATE = NOW()
+		WHERE
+			M_NO = #{m_no}
+		
+	</update>
+	
+	<delete id="memberDeleteConfirm" parameterType="String">
+		
+		DELETE FROM
+			TBL_MEMBER
+		WHERE 
+			M_ID = #{m_id}
+		
+	</delete>
+
+</mapper>
