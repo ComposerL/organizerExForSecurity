@@ -11,6 +11,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 
+import com.office.myorganizeruser.member.MemberAccessDeniedHandler;
 import com.office.myorganizeruser.member.mapper.IMemberMapper;
 
 import lombok.extern.log4j.Log4j2;
@@ -58,7 +59,9 @@ public class SpringSecurityConfig {
 		
 		http
 			.exceptionHandling(exceptionConfig -> exceptionConfig
-					.accessDeniedPage("/member/accessDeniedPage"));
+//					.accessDeniedPage("/member/accessDeniedPage") // 기본 제공해주는 객체 사용할 때
+					.accessDeniedHandler(new MemberAccessDeniedHandler()) //accessDeniedHandler 객체를 따로 만들어서 사용할 때
+					);
 		
 		http
 			.formLogin(login -> login

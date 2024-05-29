@@ -3,6 +3,7 @@ package com.office.myorganizeruser.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,12 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
-
-
-
-
 
 @Log4j2
 @Controller
@@ -161,24 +160,38 @@ public class MemberController {
 	
 	// 회원 정보 삭제 확인
 	@GetMapping("/memberDeleteConfirm")
-	public String memberDeleteConfirm(HttpSession session) {
+	public String memberDeleteConfirm(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		log.info("memberDeleteConfirm()");
 		
 		String nextPage = "member/delete_ok";
 		
-		Object obj = session.getAttribute("loginedMemberId");
-//		if(obj == null) { //인터셉터로 세션체크
+//		Object obj = session.getAttribute("loginedMemberId");
+//		if(obj == null) { //인터셉터로 세션체크하면 주석처리
 //			return "redirect:/member/memberSignIn";
 //		}
 		
-		String loginedMemberId = String.valueOf(obj);
-		int result = memberService.memberDeleteConfirm(loginedMemberId);
+//		String loginedMemberId = String.valueOf(obj);
+//		int result = memberService.memberDeleteConfirm(loginedMemberId);
+//		
+//		if(result <= 0) {
+//			nextPage = "member/delete_ng";
+//		}
+		
+//		session.invalidate(); // 세션 무효화 = 객체가 사라지는게 아니라 비즈니스 로직이 끝나고 난 후 다시 리퀘스트가 오는 순간에 GC가 수거해가고 새로운 세션객체가 생성된다.
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //인증 되어있는 객체 반환		
+		
+		int result = memberService.memberDeleteConfirm(authentication.getName());
 		
 		if(result <= 0) {
+			
 			nextPage = "member/delete_ng";
+			
+		}else {
+			
+			new SecurityContextLogoutHandler().logout(request, response, authentication); //정보 삭제 후 로그아웃 처리
+			
 		}
-		
-		session.invalidate(); // 세션 무효화 = 객체가 사라지는게 아니라 비즈니스 로직이 끝나고 난 후 다시 리퀘스트가 오는 순간에 GC가 수거해가고 새로운 세션객체가 생성된다.
 		
 		return nextPage;
 	}	
