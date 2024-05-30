@@ -1,0 +1,316 @@
+article {
+   width: 100%;
+   margin: 50px 0 70px;
+}
+
+#article_wrap {
+   width: 1400px;
+   margin: 0 auto;
+}
+
+/* WORD START */
+#article_wrap .word {
+   text-align: center;
+   font-weight: bolder;
+   font-size: 1.1em;
+}
+/* WORD END */
+
+
+/* CONTENT START */
+#article_wrap .content {
+   margin-top: 10px;
+   text-align: center;
+}
+
+/* YEAR MONTH SELECT START */
+#article_wrap .select_wrap {
+   width: 500px;
+   margin: 20px auto;
+   padding: 10px 30px;
+   text-align: center;
+   border-radius: 60px;
+   text-align: center;
+   background-color: #cffff6;
+}
+
+#article_wrap .select_wrap select {
+   width: 100px;
+   padding: 5px;
+   text-align: right;
+   margin: 3px;
+   border: 0;
+   border-bottom: 1px solid #ccc;
+   background-color: #cffff6;
+}
+/* YEAR MONTH SELECT END */
+
+/* CALENDER TABLE START */
+#article_wrap .calender {
+   width: 1400px;
+   margin: 0 auto 30px;
+}
+
+#table_calender {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+#table_calender tr th {
+   border: 1px solid #ccc;
+   background-color: #f2f2f2;
+   padding: 5px 0;
+}
+
+#table_calender tr th:first-child {
+   background-color: #fff5f5;
+}
+   
+#table_calender tr th:last-child {
+   background-color: #e8fdff;
+}
+
+#table_calender tr td {
+   border: 1px solid #ccc;
+   text-align: right;
+   height: 150px;
+   vertical-align: top;
+   padding: 3px;
+   width: 210px;
+}
+
+#table_calender tr td:first-child {
+   background-color: #fff5f5;
+}
+
+#table_calender tr td:last-child {
+   background-color: #e8fdff;
+}
+
+#table_calender tr td a.write_plan {
+   display: inline-block;
+   border-radius: 3px;
+   padding: 0 6px 2px;
+   background-color: #4eccae;
+   color: #fff;
+}
+
+#table_calender tr td ul.plan {
+   overflow: hidden;
+   padding: 5px;
+}
+
+#table_calender tr td ul.plan li {
+   border-bottom: 1px dashed #ccc;
+   margin-top: 5px;
+}
+/* CALENDER TABLE END */
+
+/* CALENDER WRITE PLAN START */
+#write_plan {
+   display: none;
+   position: fixed;
+   top: 0; left: 0;
+   width: 100%; height: 100%;
+   background-color: rgba(0, 0, 0, .7);
+}
+
+#write_plan .write_plan_wrap {
+   width: 700px;
+   margin: 50px auto 0;
+   text-align: center;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   padding: 50px 0;
+}
+
+#write_plan .write_plan_wrap .select_wrap {
+   margin-bottom: 20px;
+}
+
+#write_plan .write_plan_wrap select {
+   width: 70px;
+   padding: 5px;
+   text-align: right;
+   margin: 3px;
+   border: 1px solid #ccc;
+}
+
+#write_plan .write_plan_wrap input {
+   width: 400px;
+   padding: 10px;
+   margin: 3px;
+}
+
+#write_plan .write_plan_wrap input[type='file'] {
+   width: 402px;
+   border: 1px solid #ccc;
+}
+   
+#write_plan .write_plan_wrap input[type='button'],
+#write_plan .write_plan_wrap input[type='reset'] {
+   width: 120px;
+}
+/* CALENDER WRITE PLAN END */
+
+/* CALENDER DETAIL PLAN START */
+#detail_plan {
+   display: none;
+   position: fixed;
+   top: 0; left: 0;
+   width: 100%; height: 100%;
+   background-color: rgba(0, 0, 0, .7);
+   }
+
+#detail_plan .detail_plan_wrap {
+   width: 800px;
+   margin: 20px auto 0;
+   text-align: center;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   padding: 50px 0;
+   }
+
+#detail_plan .detail_plan_wrap ul {
+   overflow: hidden;
+   }
+
+#detail_plan .detail_plan_wrap ul li {
+   float: left;
+   }
+
+#detail_plan .detail_plan_wrap ul li.detail {
+   width: 450px;
+   padding: 0 10px;
+   }
+
+#detail_plan .detail_plan_wrap .year_month_date {
+   margin-bottom: 20px;
+}
+
+#detail_plan .detail_plan_wrap select {
+   width: 70px;
+   padding: 5px;
+   text-align: right;
+   margin: 3px;
+   border: 1px solid #ccc;
+}
+   
+#detail_plan .detail_plan_wrap input {
+   width: 400px;
+   padding: 10px;
+   margin: 3px;
+}
+
+#detail_plan .detail_plan_wrap img.plan_img {
+   max-width: 424px;
+}
+
+#detail_plan .detail_plan_wrap input[type='file'] {
+   width: 402px;
+   border: 1px solid #ccc;
+}
+   
+#detail_plan .detail_plan_wrap input[type='button'] {
+   width: 120px;
+}
+
+#detail_plan .detail_plan_wrap ul li.share_reply {
+   width: 285px;
+   padding: 0 10px;
+   text-align: left
+}
+/* CALENDER DETAIL PLAN END */
+
+/* CALENDER SHARE COMMENT START */
+#detail_plan .detail_plan_wrap ul li.share_reply div.title_share {
+   border-bottom: 1px solid #ccc;
+   margin-bottom: 5px;
+   text-align: center;
+   font-weight: bold;
+   }
+   
+#detail_plan .detail_plan_wrap ul li.share_reply div.input_search_friend input[name='search_friend'] {
+   width: 255px;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_friend {
+   width: 262px;
+   position: relative;
+   top: -3px;
+   left: 3px;
+   border-radius: 2px;
+   border: 1px solid #ccc;
+   padding: 2px 7px;
+   display: none;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_friend ul {
+   width: 100%;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_friend ul li {
+   width: 100%;
+   clear: both;
+   padding: 3px 0;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_friend ul li:hover {
+   background-color: #f2f2f2;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.title_comment {
+   border-bottom: 1px solid #ccc;
+   margin-top: 30px;
+   margin-bottom: 5px;
+   text-align: center;
+   font-weight: bold;
+   }
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.input_comment input[name='comment'] {
+   width: 210px;
+}
+   
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_comment {
+   width: 262px; height: 318px;
+   position: relative;
+   top: 3px;
+   left: 3px;
+   padding: 2px 0;
+   border: 1px solid #ccc;
+   border-radius: 3px;
+   overflow: auto;
+}
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_comment ul {
+   width: 100%;
+}
+
+#detail_plan .detail_plan_wrap ul li.share_reply div.list_comment ul li {
+   width: 250px;
+   clear: both;
+   padding: 5px;
+   border-bottom: 1px solid #e3e3e3;
+   border-radius: 2px;
+}
+/* CALENDER SHARE COMMENT END */
+/* CONTENT END */
+
+
+/* OTHERS START */
+#article_wrap div.others {
+   text-align: center;
+   margin-top: 20px;
+}
+
+#article_wrap div.others a {
+   display: inline-block;
+   border-top: 1px solid rgba(200, 200, 200, .6);
+   border-bottom: 1px solid rgba(200, 200, 200, .6);
+   padding: 6px 15px;
+}
+/* OTHERS END */

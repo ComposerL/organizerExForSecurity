@@ -53,7 +53,7 @@ public class SpringSecurityConfig {
 							"/member/memberSignIn",
 							"/member/memberSignInConfirm",
 							"/member/memberSignInResult").permitAll()
-					.requestMatchers("/organizer/**").hasRole("USER_APPROVED")
+					.requestMatchers("/plan/**").hasRole("USER_APPROVED")
 					.anyRequest().authenticated()
 					);
 		

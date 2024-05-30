@@ -1,5 +1,7 @@
 package com.office.myorganizeruser.member.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.office.myorganizeruser.member.MemberDto;
@@ -7,16 +9,18 @@ import com.office.myorganizeruser.member.MemberDto;
 @Mapper
 public interface IMemberMapper {
 
-	boolean isMember(String m_id);
+	public boolean isMember(String m_id);
 
-	int memberSignUpConfirm(MemberDto memberDto);
+	public int memberSignUpConfirm(MemberDto memberDto);
 
-	MemberDto memberSignInConfirm(MemberDto memberDto);
+	public MemberDto memberSignInConfirm(MemberDto memberDto);
 
-	MemberDto getMemberById(String m_id);
+	public MemberDto getMemberById(String m_id);
 
-	int memberModifyConfirm(MemberDto memberDto);
+	public int memberModifyConfirm(MemberDto memberDto);
 
-	int memberDeleteConfirm(String m_id);
+	public int memberDeleteConfirm(String m_id);
+
+	public List<MemberDto> getSearchFriends(String keyword);
 
 }

@@ -4,6 +4,8 @@
 
 	<typeAliases>
 		<typeAlias type="com.office.myorganizeruser.member.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.office.myorganizeruser.plan.PlanDto" alias="PlanDto"/>
+		<typeAlias type="com.office.myorganizeruser.plan.comment.CommentDto" alias="CommentDto"/>
 	</typeAliases>
 
 </configuration>

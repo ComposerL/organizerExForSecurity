@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.office.myorganizeruser.plan.mapper.IPlanMapper">
+	
+	<insert id="writePlan" parameterType="PlanDto" useGeneratedKeys="true" keyProperty="p_no">
+		
+		INSERT INTO 
+			TBL_PLAN (
+				P_ORI_OWNER_ID,
+				M_ID,
+				P_YEAR,
+				P_MONTH,
+				P_DATE,
+				P_IMG_NAME,
+				P_TITLE,
+				P_BODY
+			) VALUES (
+				#{m_id},
+				#{m_id},
+				#{p_year},
+				#{p_month},
+				#{p_date},
+				#{p_img_name},
+				#{p_title},
+				#{p_body}
+			)
+		
+	</insert>
+	
+	<update id="setPOriNo">
+		
+		UPDATE 
+			TBL_PLAN 
+		SET 
+			P_ORI_NO = #{p_no} 
+		WHERE 
+			P_NO = #{p_no}
+		
+	</update>
+	
+	<select id="getPlans" parameterType="PlanDto">
+	
+		SELECT
+			*
+		FROM 
+			TBL_PLAN 
+		WHERE 
+			M_ID = #{m_id}
+		AND 
+			P_YEAR = #{p_year}
+		AND
+			P_MONTH = #{p_month}
+	
+	</select>
+	
+	<select id="getPlan" parameterType="int">
+	
+		SELECT
+			*
+		FROM 
+			TBL_PLAN 
+		WHERE 
+			P_NO = #{p_no}
+	
+	</select>
+	
+	<delete id="removePlan" parameterType="int">
+		
+		DELETE FROM 
+			TBL_PLAN 
+		WHERE 
+			P_NO = #{p_no}
+		
+	</delete>
+	
+	<update id="modifyPlan" parameterType="PlanDto">
+		
+		UPDATE 
+			TBL_PLAN 
+		SET 
+			P_YEAR = #{p_year},
+			P_MONTH = #{p_month},
+			P_DATE = #{p_date},
+			P_TITLE = #{p_title},
+			P_BODY = #{p_body},
+			<if test="p_img_name != null">
+			P_IMG_NAME = #{p_img_name},
+			</if>
+			P_MOD_DATE = NOW()
+		WHERE 
+			P_NO = #{p_no}
+			
+		
+	</update>
+	
+	<select id="isSharedPlan" parameterType="Map" resultType="boolean">
+	
+		SELECT 
+			COUNT(*)
+		FROM
+			TBL_PLAN
+		WHERE
+			P_ORI_NO = #{arg0}
+		AND
+			M_ID = #{arg1}
+	
+	</select>
+	
+	<insert id="sharePlan" parameterType="PlanDto">
+	
+		INSERT INTO
+			TBL_PLAN(
+				P_ORI_NO,
+				P_ORI_OWNER_ID,
+				M_ID,
+				P_YEAR,
+				P_MONTH,
+				P_DATE,
+				P_IMG_NAME,
+				P_TITLE,
+				P_BODY
+			) VALUES (
+				#{planDto.p_ori_no},
+				#{planDto.p_ori_owner_id},
+				#{m_id},
+				#{planDto.p_year},
+				#{planDto.p_month},
+				#{planDto.p_date},
+				#{planDto.p_img_name},
+				#{planDto.p_title},
+				#{planDto.p_body}
+			)
+	
+	</insert>
+	
+</mapper>

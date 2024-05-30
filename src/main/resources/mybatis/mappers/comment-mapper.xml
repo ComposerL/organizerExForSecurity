@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.office.myorganizeruser.plan.comment.mapper.ICommentMapper">
+	
+	   <insert id="registComment"
+	      parameterType="Map"
+	   >
+   
+	      INSERT INTO 
+	         TBL_COMMENT(
+	            P_ORI_NO,
+	            M_ID,
+	            C_TXT
+	         )
+	      VALUES(
+	         #{arg0},
+	         #{arg1},
+	         #{arg2}
+	      )
+	   
+	   </insert>
+	   
+	   <select id="getComments" parameterType="int" resultType="CommentDto">
+	   	
+	  		SELECT
+	  			*
+	  		FROM	
+	  			TBL_COMMENT
+	  		WHERE
+	  			P_ORI_NO = #{p_ori_no}
+	  		ORDER BY
+	  			C_NO DESC 	
+	  
+	   </select>
+	
+</mapper>
