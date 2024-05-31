@@ -66,10 +66,14 @@
 	
 	<delete id="removePlan" parameterType="int">
 		
-		DELETE FROM 
-			TBL_PLAN 
-		WHERE 
-			P_NO = #{p_no}
+		DELETE TP, TC FROM 
+	         TBL_PLAN AS TP 
+	    JOIN 
+	         TBL_COMMENT AS TC 
+	    ON 
+	         TP.P_ORI_NO = TC.P_ORI_NO
+	    WHERE 
+	         TP.P_ORI_NO = #{p_no}
 		
 	</delete>
 	
@@ -88,7 +92,7 @@
 			</if>
 			P_MOD_DATE = NOW()
 		WHERE 
-			P_NO = #{p_no}
+			P_ORI_NO = #{p_ori_no}
 			
 		
 	</update>
